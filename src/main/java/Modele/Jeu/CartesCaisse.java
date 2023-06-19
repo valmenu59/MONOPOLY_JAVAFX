@@ -7,7 +7,7 @@ import java.util.Stack;
 
 public class CartesCaisse {
 
-    private Stack<Carte> pile;
+    private final Stack<Carte> pile;
 
     public CartesCaisse(){
         pile = new Stack<>();

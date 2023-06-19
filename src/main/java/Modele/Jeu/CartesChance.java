@@ -7,7 +7,7 @@ import java.util.Stack;
 
 public class CartesChance {
 
-    private Stack<Carte> pile;
+    private final Stack<Carte> pile;
 
     public CartesChance(){
         pile = new Stack<>();

@@ -2,6 +2,7 @@ package Affichage;
 
 import Affichage.fx.ImageJeu;
 import Controle.ControleJeu;
+import Modele.Jeu.Joueur;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -21,7 +22,9 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.transform.Scale;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AffichageJeu extends Scene {
 
@@ -37,6 +40,7 @@ public class AffichageJeu extends Scene {
     private double zoomFactor;
     private double taille;
     private ControleJeu controle;
+    private final Map<Integer, Joueur> listeJoueur = new HashMap<>();
 
     public AffichageJeu(){
         super(new BorderPane(), 1280, 720);
@@ -45,7 +49,7 @@ public class AffichageJeu extends Scene {
         affichagePrincipale.setStyle("-fx-background-color: rgb(218, 233, 212)");
         afficherPlateau();
         afficherCote();
-        afficherJoueurs();
+
 
 
 
@@ -229,26 +233,26 @@ public class AffichageJeu extends Scene {
     public void afficherJoueurs(){
         AnchorPane affichageJoueurs = new AnchorPane();
 
-        Label joueur1 = new Label("Joueur 1 \n$99999999");
+        Label joueur1 = new Label(listeJoueursToString(1));
         joueur1.setMinSize(100, 100);
         joueur1.setLayoutX(10);
         joueur1.setLayoutY(-30);
         affichageJoueurs.getChildren().add(joueur1);
 
-        Label joueur2 = new Label("Joueur 2 \n $99999999");
+        Label joueur2 = new Label(listeJoueursToString(2));
         joueur2.setMinSize(100,100);
         joueur2.setTextAlignment(TextAlignment.RIGHT);
         joueur2.setLayoutX(scene.getWidth() - 70);
         joueur2.setLayoutY(-30);
         affichageJoueurs.getChildren().add(joueur2);
 
-        Label joueur3 = new Label("Joueur 3 \n $99999999");
+        Label joueur3 = new Label(listeJoueursToString(3));
         joueur3.setMinSize(100,100);
         joueur3.setLayoutX(10);
         joueur3.setLayoutY(scene.getHeight() - 70);
         affichageJoueurs.getChildren().add(joueur3);
 
-        Label joueur4 = new Label("Joueur 4 \n $99999999");
+        Label joueur4 = new Label(listeJoueursToString(4));
         joueur4.setMinSize(100,100);
         joueur4.setTextAlignment(TextAlignment.RIGHT);
         joueur4.setLayoutX(scene.getWidth() - 70);
@@ -256,5 +260,13 @@ public class AffichageJeu extends Scene {
         affichageJoueurs.getChildren().add(joueur4);
 
         affichagePrincipale.getChildren().add(affichageJoueurs);
+    }
+
+    public Map<Integer, Joueur> getListeJoueur() {
+        return listeJoueur;
+    }
+
+    public String listeJoueursToString(int numeroJoueur){
+        return listeJoueur.get(numeroJoueur).toString();
     }
 }
