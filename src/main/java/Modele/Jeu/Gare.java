@@ -7,8 +7,8 @@ public class Gare extends Terrain{
     private static final int LOYER3 = 100;
     private static final int LOYER4 = 200;
 
-    public Gare(int numeroCase){
-        super(numeroCase, 200);
+    public Gare(int numeroCase, String nomGare){
+        super(numeroCase, nomGare, 200);
     }
 
     public int getLoyer1(){

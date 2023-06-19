@@ -12,10 +12,10 @@ public class Propriete extends Terrain {
     private final int valeurAchatMaison;
     private final Couleurs couleur;
 
-    public Propriete(int numeroCase, int valeurAchat,
+    public Propriete(int numeroCase, String nom, int valeurAchat,
                      int loyer, int loyer1Maison, int loyer2Maisons, int loyer3Maisons, int loyer4Maisons, int loyerHotel,
                      int valeurHypotheque, int valeurAchatMaison, Couleurs couleur){
-        super(numeroCase, valeurAchat);
+        super(numeroCase, nom, valeurAchat);
         this.loyer = loyer;
         this.loyer1Maison = loyer1Maison;
         this.loyer2Maisons = loyer2Maisons;

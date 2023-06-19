@@ -6,8 +6,8 @@ public class Compagnie extends Terrain {
     private static final int MULTIPLICATEUR1 = 4;
     private static final int MULTIPLICATEUR2 = 10;
 
-    public Compagnie(int numeroCase){
-        super(numeroCase, 150);
+    public Compagnie(int numeroCase, String nomCompagnie){
+        super(numeroCase, nomCompagnie, 150);
     }
 
     public int getValeurHypotheque(){
