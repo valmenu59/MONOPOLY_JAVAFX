@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f8a2680-a9f8-4d71-a660-856c125ecc58" name="Changes" comment="Liste joueurs">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/de/de1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/de/de2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/de/de3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/de/de4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/de/de5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/de/de6.png" afterDir="false" />
+    <list default="true" id="9f8a2680-a9f8-4d71-a660-856c125ecc58" name="Changes" comment="Création affichage debut">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Affichage/AffichageJeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Affichage/AffichageJeu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controle/ControleJeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controle/ControleJeu.java" afterDir="false" />
@@ -43,20 +37,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/valme/OneDrive/BUT_INFO/Projets_perso/Java/MONOPOLY_FX/src/main/resources/de",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/valme/OneDrive/BUT_INFO/Projets_perso/Java/MONOPOLY_FX/src/main/resources/de&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\valme\OneDrive\BUT_INFO\Projets_perso\Java\MONOPOLY_FX\src\main\resources\de" />
@@ -105,7 +99,8 @@
       <workItem from="1687079297851" duration="1088000" />
       <workItem from="1687083807353" duration="38195000" />
       <workItem from="1687160607415" duration="9633000" />
-      <workItem from="1687172748732" duration="5547000" />
+      <workItem from="1687172748732" duration="5651000" />
+      <workItem from="1687190156995" duration="7162000" />
     </task>
     <task id="LOCAL-00001" summary="Debut jeu Monopoly en JavaFX">
       <created>1687127038371</created>
@@ -128,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687169824647</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Création affichage debut">
+      <created>1687179695814</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1687179695814</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,6 +140,7 @@
     <MESSAGE value="Debut jeu Monopoly en JavaFX" />
     <MESSAGE value="Ajout de nombreuses classes" />
     <MESSAGE value="Liste joueurs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Liste joueurs" />
+    <MESSAGE value="Création affichage debut" />
+    <option name="LAST_COMMIT_MESSAGE" value="Création affichage debut" />
   </component>
 </project>

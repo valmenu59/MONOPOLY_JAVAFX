@@ -49,6 +49,7 @@ public class AffichageJeu extends Scene {
     private double taille;
     private ControleJeu controle;
     private final Map<Integer, Joueur> listeJoueur = new HashMap<>();
+    private Rectangle de1,de2;
 
     private Text textSurnom;
 
@@ -59,8 +60,8 @@ public class AffichageJeu extends Scene {
         affichagePrincipale.setStyle("-fx-background-color: rgb(218, 233, 212)");
         afficherPlateau();
         afficherCote();
-
-        affichageTexteDebutDePartie();
+        System.out.println("iojudfgjfdklgjfkldgjn,dklfgj,nlkdfgn,jh");
+        //affichageTexteDebutDePartie();
 
         //controlerCarte();
 
@@ -85,16 +86,59 @@ public class AffichageJeu extends Scene {
 
         ImageJeu img_de1 = new ImageJeu(getClass().getResource(DE1).toExternalForm(), scene.getWidth() *0.05, scene.getWidth() * 0.05, true);
 
-        //GaussianBlur flou = new GaussianBlur(scene.getWidth() * 0.5);
+        HBox hBoxLabels = new HBox();
+        hBoxLabels.setSpacing(10);
+        hBoxLabels.setAlignment(Pos.CENTER);
+
+        List<Color> listeCouleurs = new ArrayList<>();
+        listeCouleurs.add(Color.BLUE);
+        listeCouleurs.add(Color.RED);
+        listeCouleurs.add(Color.GREEN);
+        listeCouleurs.add(Color.YELLOW);
+
+        int numeroJoueur = 1;
+
+        for (Color c : listeCouleurs ){
+            Label labelJoueur = new Label("J"+numeroJoueur+" : ");
+            if (!c.equals(Color.YELLOW)) {
+                labelJoueur.setTextFill(Color.WHITE);
+            }
+            Rectangle rectangleJoueur = new Rectangle(100,40);
+            rectangleJoueur.setFill(c);
+            StackPane stackPaneJoueur = new StackPane(rectangleJoueur, labelJoueur);
+            hBoxLabels.getChildren().add(stackPaneJoueur);
+            numeroJoueur++;
+        }
+
+
+
+        /*
+        Label labelJ2 = new Label("J2 : ");
+        labelJ2.setTextFill(Color.WHITE);
+        Rectangle rectangleJ2 = new Rectangle(100,40);
+        rectangleJ2.setFill(Color.RED);
+        StackPane stackPaneJ2 = new StackPane(rectangleJ2, labelJ2);
+        hBoxLabels.getChildren().add(stackPaneJ2);
+
+        Label labelJ2 = new Label("J2 : ");
+        labelJ2.setTextFill(Color.WHITE);
+        Rectangle rectangleJ2 = new Rectangle(100,40);
+        rectangleJ2.setFill(Color.RED);
+        StackPane stackPaneJ2 = new StackPane(rectangleJ2, labelJ2);
+        hBoxLabels.getChildren().add(stackPaneJ2);
+
+         */
+
         BoxBlur flou = new BoxBlur();
         Rectangle rPrincipal = new Rectangle(scene.getWidth() * 0.5, scene.getHeight() * 0.5);
         rPrincipal.setFill(Color.rgb(240,240,240,0.95));
         rPrincipal.setEffect(flou);
-        Rectangle de1 = new Rectangle(scene.getWidth() * 0.05, scene.getWidth() * 0.05);
+        de1 = new Rectangle(scene.getWidth() * 0.05, scene.getWidth() * 0.05);
         de1.setStroke(Color.BLACK);
         de1.setFill(new ImagePattern(img_de1));
-        Rectangle de2 = new Rectangle(scene.getWidth() * 0.05, scene.getWidth() * 0.05);
+        de2 = new Rectangle(scene.getWidth() * 0.05, scene.getWidth() * 0.05);
         de2.setStroke(Color.BLACK);
+        de2.setFill(new ImagePattern(img_de1));
         hBox.getChildren().addAll(de1, de2);
         hBox.setAlignment(Pos.CENTER);
 
@@ -103,7 +147,7 @@ public class AffichageJeu extends Scene {
         Button bouton = new Button("Lancer les dés");
         vBox.setAlignment(Pos.CENTER);
 
-        vBox.getChildren().addAll(texteSurnom, hBox, bouton);
+        vBox.getChildren().addAll(hBoxLabels, texteSurnom, hBox, bouton);
 
         stackPane.getChildren().addAll(rectangle, rPrincipal, vBox);
         borderPane.setCenter(stackPane);
@@ -321,5 +365,26 @@ public class AffichageJeu extends Scene {
                 initialY = 0;
             }
         });
+    }
+
+
+    public String getSourceImage(String nom){
+        switch (nom){
+          case "de1" -> { return DE1; }
+          case "de2" -> { return DE2; }
+          case "de3" -> { return DE3; }
+          case "de4" -> { return DE4; }
+          case "de5" -> { return DE5; }
+          case "de6" -> { return DE6; }
+          default -> { return null; }
+        }
+    }
+
+    public Rectangle getDe1() {
+        return de1;
+    }
+
+    public Rectangle getDe2() {
+        return de2;
     }
 }
