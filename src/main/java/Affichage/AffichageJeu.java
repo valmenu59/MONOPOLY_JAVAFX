@@ -7,9 +7,9 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.effect.Blend;
-import javafx.scene.effect.BlendMode;
+import javafx.scene.effect.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.transform.Scale;
 
@@ -26,7 +27,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 public class AffichageJeu extends Scene {
+    private static final String DE1 = "/de/de1.png";
+    private static final String DE2 = "/de/de2.png";
+    private static final String DE3 = "/de/de3.png";
+    private static final String DE4 = "/de/de4.png";
+    private static final String DE5 = "/de/de5.png";
+    private static final String DE6 = "/de/de6.png";
 
     private final ArrayList<Node> listeElementsPlateau = new ArrayList<>();
     private final ArrayList<Rectangle> listeRectangles = new ArrayList<>();
@@ -42,6 +50,8 @@ public class AffichageJeu extends Scene {
     private ControleJeu controle;
     private final Map<Integer, Joueur> listeJoueur = new HashMap<>();
 
+    private Text textSurnom;
+
     public AffichageJeu(){
         super(new BorderPane(), 1280, 720);
         scene = this;
@@ -50,14 +60,148 @@ public class AffichageJeu extends Scene {
         afficherPlateau();
         afficherCote();
 
+        affichageTexteDebutDePartie();
+
+        //controlerCarte();
+
+
+    }
+    public void affichageTexteDebutDePartie(){
+
+        Rectangle rectangle = new Rectangle(scene.getWidth(), scene.getHeight());
+        rectangle.setFill(new ImagePattern(new ImageJeu(getClass().getResource("/arrierePlanJeu.png").toExternalForm())));
+        rectangle.setStroke(Color.BLACK);
+
+        BorderPane borderPane = new BorderPane();
+        StackPane stackPane = new StackPane();
+        VBox vBox = new VBox();
+        HBox hBox = new HBox();
+        vBox.setSpacing(20);
+        hBox.setSpacing(75);
+
+        borderPane.setPrefSize(scene.getWidth(), scene.getHeight());
+        borderPane.setMinSize(scene.getWidth(), scene.getHeight());
+        Text texteSurnom = new Text("Attribution de l'ordre des joueurs : ");
+
+        ImageJeu img_de1 = new ImageJeu(getClass().getResource(DE1).toExternalForm(), scene.getWidth() *0.05, scene.getWidth() * 0.05, true);
+
+        //GaussianBlur flou = new GaussianBlur(scene.getWidth() * 0.5);
+        BoxBlur flou = new BoxBlur();
+        Rectangle rPrincipal = new Rectangle(scene.getWidth() * 0.5, scene.getHeight() * 0.5);
+        rPrincipal.setFill(Color.rgb(240,240,240,0.95));
+        rPrincipal.setEffect(flou);
+        Rectangle de1 = new Rectangle(scene.getWidth() * 0.05, scene.getWidth() * 0.05);
+        de1.setStroke(Color.BLACK);
+        de1.setFill(new ImagePattern(img_de1));
+        Rectangle de2 = new Rectangle(scene.getWidth() * 0.05, scene.getWidth() * 0.05);
+        de2.setStroke(Color.BLACK);
+        hBox.getChildren().addAll(de1, de2);
+        hBox.setAlignment(Pos.CENTER);
 
 
 
+        Button bouton = new Button("Lancer les dés");
+        vBox.setAlignment(Pos.CENTER);
+
+        vBox.getChildren().addAll(texteSurnom, hBox, bouton);
+
+        stackPane.getChildren().addAll(rectangle, rPrincipal, vBox);
+        borderPane.setCenter(stackPane);
+
+        affichagePrincipale.getChildren().add(borderPane);
 
 
+    }
 
 
+    public void afficherPlateau(){
+        if (scene.getHeight() <= scene.getWidth()){
+            affichagePlateau = new AnchorPane();
+            taille = scene.getHeight() * 0.9;
+            affichagePlateau.setMaxHeight(taille);
+            affichagePlateau.setMaxWidth(taille);
+        } else {
+            affichagePlateau = new AnchorPane();
+            taille = scene.getWidth() * 0.9;
+            affichagePlateau.setMaxWidth(taille);
+            affichagePlateau.setMaxHeight(taille);
+        }
+        ImageView imgPlateau = new ImageJeu(getClass().getResource("/monopoly-plateau.png").toExternalForm())
+                .afficherImage(taille, taille, true);
+        affichagePrincipale.setCenter(affichagePlateau);
+        affichagePlateau.getChildren().add(imgPlateau);
+    }
 
+    public void afficherCote(){
+
+        Rectangle rectangle = new Rectangle(scene.getWidth(), scene.getHeight() * 0.05);
+        affichagePrincipale.setTop(rectangle);
+        //rectangle.setFill(Color.rgb(218, 233, 212));
+        rectangle.setFill(Color.LIGHTBLUE);
+        listeRectangles.add(rectangle);
+
+        Rectangle rectangle1 = new Rectangle(scene.getWidth(), scene.getHeight() * 0.05);
+        affichagePrincipale.setBottom(rectangle1);
+        rectangle1.setFill(Color.rgb(218, 233, 212));
+        rectangle1.setFill(Color.LIGHTBLUE);
+        listeRectangles.add(rectangle1);
+
+        Rectangle rectangle2 = new Rectangle( (scene.getWidth() - scene.getHeight() * 0.9) / 2, scene.getHeight() * 0.9 + 2);
+        affichagePrincipale.setLeft(rectangle2);
+        rectangle2.setFill(Color.rgb(218, 233, 212));
+        rectangle2.setFill(Color.LIGHTBLUE);
+        listeRectangles.add(rectangle2);
+
+
+        Rectangle rectangle3 = new Rectangle( (scene.getWidth() - scene.getHeight() * 0.9) / 2, scene.getHeight() *0.9 + 2);
+        affichagePrincipale.setRight(rectangle3);
+        rectangle3.setFill(Color.rgb(218, 233, 212));
+        rectangle3.setFill(Color.LIGHTBLUE);
+        listeRectangles.add(rectangle3);
+
+    }
+
+    public void afficherJoueurs(){
+        AnchorPane affichageJoueurs = new AnchorPane();
+
+        Label joueur1 = new Label(listeJoueursToString(1));
+        joueur1.setMinSize(100, 100);
+        joueur1.setLayoutX(10);
+        joueur1.setLayoutY(-30);
+        affichageJoueurs.getChildren().add(joueur1);
+
+        Label joueur2 = new Label(listeJoueursToString(2));
+        joueur2.setMinSize(100,100);
+        joueur2.setTextAlignment(TextAlignment.RIGHT);
+        joueur2.setLayoutX(scene.getWidth() - 70);
+        joueur2.setLayoutY(-30);
+        affichageJoueurs.getChildren().add(joueur2);
+
+        Label joueur3 = new Label(listeJoueursToString(3));
+        joueur3.setMinSize(100,100);
+        joueur3.setLayoutX(10);
+        joueur3.setLayoutY(scene.getHeight() - 70);
+        affichageJoueurs.getChildren().add(joueur3);
+
+        Label joueur4 = new Label(listeJoueursToString(4));
+        joueur4.setMinSize(100,100);
+        joueur4.setTextAlignment(TextAlignment.RIGHT);
+        joueur4.setLayoutX(scene.getWidth() - 70);
+        joueur4.setLayoutY(scene.getHeight() - 70);
+        affichageJoueurs.getChildren().add(joueur4);
+
+        affichagePrincipale.getChildren().add(affichageJoueurs);
+    }
+
+    public Map<Integer, Joueur> getListeJoueur() {
+        return listeJoueur;
+    }
+
+    public String listeJoueursToString(int numeroJoueur){
+        return listeJoueur.get(numeroJoueur).toString();
+    }
+
+    public void controlerCarte(){
         scene.setOnScroll(new EventHandler<ScrollEvent>() {
             @Override
             public void handle(ScrollEvent scrollEvent) {
@@ -177,96 +321,5 @@ public class AffichageJeu extends Scene {
                 initialY = 0;
             }
         });
-
-
-
-    }
-
-
-    public void afficherPlateau(){
-        if (scene.getHeight() <= scene.getWidth()){
-            affichagePlateau = new AnchorPane();
-            taille = scene.getHeight() * 0.9;
-            affichagePlateau.setMaxHeight(taille);
-            affichagePlateau.setMaxWidth(taille);
-        } else {
-            affichagePlateau = new AnchorPane();
-            taille = scene.getWidth() * 0.9;
-            affichagePlateau.setMaxWidth(taille);
-            affichagePlateau.setMaxHeight(taille);
-        }
-        ImageView imgPlateau = new ImageJeu(getClass().getResource("/monopoly-plateau.png").toExternalForm())
-                .afficherImage(taille, taille, true);
-        affichagePrincipale.setCenter(affichagePlateau);
-        affichagePlateau.getChildren().add(imgPlateau);
-    }
-
-    public void afficherCote(){
-
-        Rectangle rectangle = new Rectangle(scene.getWidth(), scene.getHeight() * 0.05);
-        affichagePrincipale.setTop(rectangle);
-        //rectangle.setFill(Color.rgb(218, 233, 212));
-        rectangle.setFill(Color.LIGHTBLUE);
-        listeRectangles.add(rectangle);
-
-        Rectangle rectangle1 = new Rectangle(scene.getWidth(), scene.getHeight() * 0.05);
-        affichagePrincipale.setBottom(rectangle1);
-        rectangle1.setFill(Color.rgb(218, 233, 212));
-        rectangle1.setFill(Color.LIGHTBLUE);
-        listeRectangles.add(rectangle1);
-
-        Rectangle rectangle2 = new Rectangle( (scene.getWidth() - scene.getHeight() * 0.9) / 2, scene.getHeight() * 0.9 + 2);
-        affichagePrincipale.setLeft(rectangle2);
-        rectangle2.setFill(Color.rgb(218, 233, 212));
-        rectangle2.setFill(Color.LIGHTBLUE);
-        listeRectangles.add(rectangle2);
-
-
-        Rectangle rectangle3 = new Rectangle( (scene.getWidth() - scene.getHeight() * 0.9) / 2, scene.getHeight() *0.9 + 2);
-        affichagePrincipale.setRight(rectangle3);
-        rectangle3.setFill(Color.rgb(218, 233, 212));
-        rectangle3.setFill(Color.LIGHTBLUE);
-        listeRectangles.add(rectangle3);
-
-    }
-
-    public void afficherJoueurs(){
-        AnchorPane affichageJoueurs = new AnchorPane();
-
-        Label joueur1 = new Label(listeJoueursToString(1));
-        joueur1.setMinSize(100, 100);
-        joueur1.setLayoutX(10);
-        joueur1.setLayoutY(-30);
-        affichageJoueurs.getChildren().add(joueur1);
-
-        Label joueur2 = new Label(listeJoueursToString(2));
-        joueur2.setMinSize(100,100);
-        joueur2.setTextAlignment(TextAlignment.RIGHT);
-        joueur2.setLayoutX(scene.getWidth() - 70);
-        joueur2.setLayoutY(-30);
-        affichageJoueurs.getChildren().add(joueur2);
-
-        Label joueur3 = new Label(listeJoueursToString(3));
-        joueur3.setMinSize(100,100);
-        joueur3.setLayoutX(10);
-        joueur3.setLayoutY(scene.getHeight() - 70);
-        affichageJoueurs.getChildren().add(joueur3);
-
-        Label joueur4 = new Label(listeJoueursToString(4));
-        joueur4.setMinSize(100,100);
-        joueur4.setTextAlignment(TextAlignment.RIGHT);
-        joueur4.setLayoutX(scene.getWidth() - 70);
-        joueur4.setLayoutY(scene.getHeight() - 70);
-        affichageJoueurs.getChildren().add(joueur4);
-
-        affichagePrincipale.getChildren().add(affichageJoueurs);
-    }
-
-    public Map<Integer, Joueur> getListeJoueur() {
-        return listeJoueur;
-    }
-
-    public String listeJoueursToString(int numeroJoueur){
-        return listeJoueur.get(numeroJoueur).toString();
     }
 }

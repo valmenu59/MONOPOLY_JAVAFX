@@ -25,22 +25,18 @@ public class ControleJeu {
             affichage.getListeJoueur().put(numero, j);
             numero++;
         }
-        affichage.afficherJoueurs();
+        //affichage.afficherJoueurs();
+    }
+
+    public void attributionOrdreJoueurs(){
+        
     }
 
     public AffichageJeu getAffichage(){
         return this.affichage;
     }
 
-    public Monopoly getMonopoly(){
-        return monopoly;
-    }
 
-    public void partie(List<Joueur> joueurs){
-        for (Joueur j : joueurs){
-            //
-        }
-    }
 
     public void lancerDe(){
 
