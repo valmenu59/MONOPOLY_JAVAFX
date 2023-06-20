@@ -3,6 +3,7 @@ package Affichage;
 import Affichage.fx.ImageJeu;
 import Controle.ControleJeu;
 import Modele.Jeu.Joueur;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -38,6 +39,7 @@ public class AffichageJeu extends Scene {
 
     private final ArrayList<Node> listeElementsPlateau = new ArrayList<>();
     private final ArrayList<Rectangle> listeRectangles = new ArrayList<>();
+    private final ArrayList<Label> listeLabelsJoueurs = new ArrayList<>();
     private Scene scene;
     private BorderPane affichagePrincipale;
 
@@ -52,6 +54,8 @@ public class AffichageJeu extends Scene {
     private Rectangle de1,de2;
 
     private Text textSurnom;
+    private Button boutonLancerDe;
+    private boolean deLances = false;
 
     public AffichageJeu(){
         super(new BorderPane(), 1280, 720);
@@ -103,31 +107,13 @@ public class AffichageJeu extends Scene {
             if (!c.equals(Color.YELLOW)) {
                 labelJoueur.setTextFill(Color.WHITE);
             }
-            Rectangle rectangleJoueur = new Rectangle(100,40);
+            listeLabelsJoueurs.add(labelJoueur);
+            Rectangle rectangleJoueur = new Rectangle(125,40);
             rectangleJoueur.setFill(c);
             StackPane stackPaneJoueur = new StackPane(rectangleJoueur, labelJoueur);
             hBoxLabels.getChildren().add(stackPaneJoueur);
             numeroJoueur++;
         }
-
-
-
-        /*
-        Label labelJ2 = new Label("J2 : ");
-        labelJ2.setTextFill(Color.WHITE);
-        Rectangle rectangleJ2 = new Rectangle(100,40);
-        rectangleJ2.setFill(Color.RED);
-        StackPane stackPaneJ2 = new StackPane(rectangleJ2, labelJ2);
-        hBoxLabels.getChildren().add(stackPaneJ2);
-
-        Label labelJ2 = new Label("J2 : ");
-        labelJ2.setTextFill(Color.WHITE);
-        Rectangle rectangleJ2 = new Rectangle(100,40);
-        rectangleJ2.setFill(Color.RED);
-        StackPane stackPaneJ2 = new StackPane(rectangleJ2, labelJ2);
-        hBoxLabels.getChildren().add(stackPaneJ2);
-
-         */
 
         BoxBlur flou = new BoxBlur();
         Rectangle rPrincipal = new Rectangle(scene.getWidth() * 0.5, scene.getHeight() * 0.5);
@@ -144,10 +130,16 @@ public class AffichageJeu extends Scene {
 
 
 
-        Button bouton = new Button("Lancer les dés");
+        boutonLancerDe = new Button("Lancer les dés");
+        boutonLancerDe.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                deLances = true;
+            }
+        });
         vBox.setAlignment(Pos.CENTER);
 
-        vBox.getChildren().addAll(hBoxLabels, texteSurnom, hBox, bouton);
+        vBox.getChildren().addAll(hBoxLabels, texteSurnom, hBox, boutonLancerDe);
 
         stackPane.getChildren().addAll(rectangle, rPrincipal, vBox);
         borderPane.setCenter(stackPane);
@@ -386,5 +378,17 @@ public class AffichageJeu extends Scene {
 
     public Rectangle getDe2() {
         return de2;
+    }
+
+    public boolean isDeLances() {
+        return deLances;
+    }
+
+    public void setDeLances(boolean b) {
+        deLances = b;
+    }
+
+    public List<Label> getListeLabelJoueurs(){
+        return listeLabelsJoueurs;
     }
 }

@@ -7,4 +7,6 @@ module main.monopoly_fx {
     exports main.monopoly_fx;
     exports Modele.Jeu;
     opens Modele.Jeu to javafx.fxml;
+    exports Controle;
+    opens Controle to javafx.fxml;
 }

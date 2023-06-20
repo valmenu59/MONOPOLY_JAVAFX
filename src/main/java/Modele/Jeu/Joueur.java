@@ -12,6 +12,8 @@ public class Joueur {
     private final List<Gare> listeGares = new ArrayList<>();
     private final List<Compagnie> listeCompagnies = new ArrayList<>();
 
+    private int valeurDe;
+
 
     public Joueur(String surnom){
         this.surnom = surnom;
@@ -41,5 +43,13 @@ public class Joueur {
     @Override
     public String toString() {
         return surnom+"\n$"+argent;
+    }
+
+    public void setValeurDe(int valeurDe) {
+        this.valeurDe = valeurDe;
+    }
+
+    public int getValeurDe() {
+        return valeurDe;
     }
 }

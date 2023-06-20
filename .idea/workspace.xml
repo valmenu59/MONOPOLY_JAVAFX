@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f8a2680-a9f8-4d71-a660-856c125ecc58" name="Changes" comment="Création affichage debut">
+    <list default="true" id="9f8a2680-a9f8-4d71-a660-856c125ecc58" name="Changes" comment="Animation dé">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Affichage/AffichageAttributionOrdre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Affichage/SourceImages.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controle/AnimationListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controle/ControleAttributionOrdreJoueurs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Affichage/AffichageJeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Affichage/AffichageJeu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controle/ControleJeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controle/ControleJeu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Modele/Jeu/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modele/Jeu/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/monopoly_fx/ApplicationFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/monopoly_fx/ApplicationFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +24,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Principale" />
+      </map>
     </option>
   </component>
   <component name="MarkdownSettingsMigration">
@@ -63,7 +78,7 @@
       <module name="MONOPOLY_FX" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Modele.Jeu.*" />
+          <option name="PATTERN" value="Controle.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -85,6 +100,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -100,7 +116,8 @@
       <workItem from="1687083807353" duration="38195000" />
       <workItem from="1687160607415" duration="9633000" />
       <workItem from="1687172748732" duration="5651000" />
-      <workItem from="1687190156995" duration="7162000" />
+      <workItem from="1687190156995" duration="18520000" />
+      <workItem from="1687247676101" duration="7766000" />
     </task>
     <task id="LOCAL-00001" summary="Debut jeu Monopoly en JavaFX">
       <created>1687127038371</created>
@@ -130,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687179695814</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Animation dé">
+      <created>1687198131626</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1687198131626</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,6 +165,7 @@
     <MESSAGE value="Ajout de nombreuses classes" />
     <MESSAGE value="Liste joueurs" />
     <MESSAGE value="Création affichage debut" />
-    <option name="LAST_COMMIT_MESSAGE" value="Création affichage debut" />
+    <MESSAGE value="Animation dé" />
+    <option name="LAST_COMMIT_MESSAGE" value="Animation dé" />
   </component>
 </project>
