@@ -8,8 +8,10 @@ import Modele.Jeu.Joueur;
 import Modele.Jeu.Monopoly;
 import javafx.animation.AnimationTimer;
 import javafx.scene.paint.ImagePattern;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ControleAttributionOrdreJoueurs {
@@ -33,9 +35,9 @@ public class ControleAttributionOrdreJoueurs {
     private final List<Integer> listeValeurDe = new ArrayList<>();
     private final List<Joueur> listeJoueurTrie = new ArrayList<>();
 
-    public ControleAttributionOrdreJoueurs() {
+    public ControleAttributionOrdreJoueurs(Stage stage) {
 
-        affichage = new AffichageAttributionOrdre();
+        affichage = new AffichageAttributionOrdre(stage);
         monopoly = new Monopoly();
         /*
         monopoly.getListeJoueurs().add(new Joueur("joueur1a"));
@@ -68,19 +70,70 @@ public class ControleAttributionOrdreJoueurs {
         boucleAnimationDe(new AnimationListener() {
             @Override
             public void animationTerminee() {
-                listeJoueurTrie.add(listeJoueur.get(compteur));
-                listeJoueur.get(compteur).setValeurDe(valeurDe1 + valeurDe2);
-                System.out.println("ici");
-                trierListeJoueurTrie(listeJoueurTrie);
-                for (int i = 0; i < listeJoueurTrie.size(); i++){
-                    affichage.getListeLabelJoueurs().get(i).setText("J"+(i+1)+" : "+listeJoueurTrie.get(i).getSurnom()+" ("+listeJoueurTrie.get(i).getValeurDe()+")");
-                }
-                if (listeJoueurTrie.size() == listeJoueur.size()) {
-                    printListeJoueur();
+
+                if (listeJoueurTrie.size() < listeJoueur.size()) {
+                    listeJoueurTrie.add(listeJoueur.get(compteur));
+                    listeJoueur.get(compteur).setValeurDe(valeurDe1 + valeurDe2);
+                    System.out.println("ici");
+                    trierListeJoueurTrie(listeJoueurTrie);
+
+
+                    //Regardes les exaequos
+                    for (int i = 0; i < listeJoueurTrie.size() - 1; i++) {
+                        if (listeJoueurTrie.get(i).getValeurDe() == listeJoueurTrie.get(i + 1).getValeurDe()) {
+                            exaequo1.add(listeJoueurTrie.get(i));
+                            exaequo1.add(listeJoueurTrie.get(i + 1));
+                            i++;
+                        }
+                    }
+                    //permet de gérer les rares cas où par exemple : 5, 5, 3, 3
+                    if (exaequo1.size() == 4) {
+                        if (exaequo1.get(1).getValeurDe() != exaequo1.get(2).getValeurDe()) {
+                            exaequo2.add(exaequo1.get(2));
+                            exaequo2.add(exaequo1.get(3));
+                            exaequo1.remove(2);
+                            exaequo1.remove(3);
+                        }
+                    }
+
+                    for (int i = 0; i < listeJoueurTrie.size(); i++) {
+                        affichage.getListeLabelJoueurs().get(i).setText("J" + (i + 1) + " : " + listeJoueurTrie.get(i).getSurnom() + " (" + listeJoueurTrie.get(i).getValeurDe() + ")");
+                    }
+
+
+                    if (listeJoueurTrie.size() == listeJoueur.size() ) { //&& exaequo1.isEmpty() && exaequo2.isEmpty()
+                        printListeJoueur();
+                    } else {
+                        compteur++;
+                        affichage.setDeLances(false);
+                        if (listeJoueurTrie.size() == listeJoueur.size()){
+                            compteur = 0;
+                        }
+                        attributionOrdreJoueurs();
+                    }
                 } else {
-                    compteur++;
-                    affichage.setDeLances(false);
-                    attributionOrdreJoueurs();
+
+                    //Ne marche pas encore, à tester
+                    /*
+
+                    //Uniquement s'il y a 4 joueurs
+                    if (!exaequo2.isEmpty()){
+                        exaequo(exaequo2);
+                    } else if (!exaequo1.isEmpty()){
+                        if (exaequo1.size() < 4) {
+                            exaequo(exaequo1);
+                            if (exaequo1.isEmpty()){
+                                printListeJoueur();
+                            }
+                        } else {
+                            System.out.println("jfjkdfjdkjfdkjf");
+                            listeJoueurTrie.clear();
+                            compteur = 0;
+                            attributionOrdreJoueurs();
+                        }
+                    }
+
+                     */
                 }
             }
         });
@@ -89,11 +142,62 @@ public class ControleAttributionOrdreJoueurs {
 
     }
 
+
+    /*
+    Ne marche pas pour le cas de 3 axaequos
+     */
+    public void exaequo(List<Joueur> exaequo) {
+        exaequo.get(compteur).setValeurDe(valeurDe1 + valeurDe2);
+        if (exaequo.size() == 2) {
+            if (exaequo.get(0).getValeurDe() == exaequo.get(1).getValeurDe() && compteur == 1) {
+                compteur = 0;
+                attributionOrdreJoueurs();
+            } else if (compteur == 1) {
+                if (exaequo.get(0).getValeurDe() > exaequo.get(1).getValeurDe()) {
+                    Joueur a, b;
+                    a = listeJoueurTrie.get(2);
+                    b = listeJoueurTrie.get(3);
+                    listeJoueurTrie.remove(3);
+                    listeJoueurTrie.remove(2);
+                    listeJoueurTrie.add(b);
+                    listeJoueurTrie.add(a);
+                }
+                exaequo.clear();
+                compteur = 0;
+                attributionOrdreJoueurs();
+            }
+            compteur++;
+            attributionOrdreJoueurs();
+        } else {
+            if (exaequo.get(0).getValeurDe() == exaequo.get(1).getValeurDe() && exaequo.get(1).getValeurDe() == exaequo.get(2).getValeurDe()) {
+                compteur = 0;
+                attributionOrdreJoueurs();
+            } else {
+                Joueur a, b, c;
+                a = listeJoueurTrie.get(1);
+                b = listeJoueurTrie.get(2);
+                c = listeJoueurTrie.get(3);
+                listeJoueurTrie.remove(3);
+                listeJoueurTrie.remove(2);
+                listeJoueurTrie.remove(1);
+                listeJoueurTrie.add(c);
+                listeJoueurTrie.add(b);
+                listeJoueurTrie.add(a);
+                exaequo.clear();
+                compteur = 0;
+                attributionOrdreJoueurs();
+            }
+            compteur++;
+            attributionOrdreJoueurs();
+        }
+    }
+
     public void printListeJoueur(){
         for (int i = 0; i < 4; i++) {
             System.out.println(listeJoueurTrie.get(i).getValeurDe());
             System.out.println(listeJoueurTrie.get(i).getSurnom());
         }
+        ControleJeu cj = new ControleJeu(listeJoueurTrie, affichage.getStage());
     }
 
 
@@ -129,7 +233,7 @@ public class ControleAttributionOrdreJoueurs {
                         animationDe();
                         tempsAccumule -= FPS;
                         if (affichage.isDeLances()){
-                            if (Math.random() < 0.15){
+                            if (Math.random() < 0.25){
                                 System.out.println("j'arrête la boucle");
                                 if (listener != null){
                                     listener.animationTerminee();

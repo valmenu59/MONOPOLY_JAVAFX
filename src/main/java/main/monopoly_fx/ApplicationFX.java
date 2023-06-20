@@ -13,7 +13,7 @@ public class ApplicationFX extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("MONOPOLY - JavaFX Edition");
-        stage.setScene(new ControleAttributionOrdreJoueurs().getAffichage());
+        stage.setScene(new ControleAttributionOrdreJoueurs(stage).getAffichage());
         stage.show();
     }
 

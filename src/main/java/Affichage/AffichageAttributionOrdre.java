@@ -13,12 +13,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AffichageAttributionOrdre extends Scene {
     private Scene scene;
+    private Stage stage;
     private BorderPane affichagePrincipale;
     private SourceImages sourceImages = new SourceImages();
     private final ArrayList<Label> listeLabelsJoueurs = new ArrayList<>();
@@ -28,9 +30,10 @@ public class AffichageAttributionOrdre extends Scene {
     private boolean deLances = false;
 
 
-    public AffichageAttributionOrdre(){
+    public AffichageAttributionOrdre(Stage fenetre){
         super(new BorderPane(), 1280, 720);
         scene = this;
+        stage = fenetre;
         affichagePrincipale = (BorderPane) getRoot();
 
         BackgroundImage backgroundImage;
@@ -38,7 +41,7 @@ public class AffichageAttributionOrdre extends Scene {
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
-                new BackgroundSize(scene.getWidth(), scene.getHeight(), false, false, false, false));
+                new BackgroundSize(scene.getWidth() * 1.5, scene.getHeight() * 1.5, false, false, false, false));
         affichagePrincipale.setBackground(new Background(backgroundImage));
 
     }
@@ -132,4 +135,7 @@ public class AffichageAttributionOrdre extends Scene {
     }
 
 
+    public Stage getStage() {
+        return stage;
+    }
 }
