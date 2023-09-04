@@ -35,26 +35,6 @@ public class ControleJeu {
 
 
 
-        /*
-        monopoly.getListeJoueurs().add(new Joueur("joueur1a"));
-        monopoly.getListeJoueurs().add(new Joueur("joueur2b"));
-        monopoly.getListeJoueurs().add(new Joueur("joueur3c"));
-        monopoly.getListeJoueurs().add(new Joueur("joueur4d"));
-        int numero = 1;
-        for (Joueur j : monopoly.getListeJoueurs()){
-            affichage.getListeJoueur().put(numero, j);
-            numero++;
-        }
-        //affichage.afficherJoueurs();
-
-
-        listeJoueur.add(new Joueur("joueur1a"));
-        listeJoueur.add(new Joueur("joueur2b"));
-        listeJoueur.add(new Joueur("joueur3c"));
-        listeJoueur.add(new Joueur("joueur4d"));
-        */
-
-
 
 
     }

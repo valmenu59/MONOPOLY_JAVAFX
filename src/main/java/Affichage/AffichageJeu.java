@@ -17,6 +17,7 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.Text;
@@ -71,6 +72,11 @@ public class AffichageJeu extends Scene {
 
         controlerCarte();
 
+        ArrayList<Rectangle> rectangles = testCouleurProprietes();
+        affichagePlateau.getChildren().addAll(rectangles);
+        ArrayList<Circle> cercles = testPositionPions();
+        affichagePlateau.getChildren().addAll(cercles);
+
 
     }
 
@@ -91,6 +97,7 @@ public class AffichageJeu extends Scene {
                 .afficherImage(taille, taille, true);
         affichagePrincipale.setCenter(affichagePlateau);
         affichagePlateau.getChildren().add(imgPlateau);
+
     }
 
     public void afficherCote(){
@@ -282,6 +289,120 @@ public class AffichageJeu extends Scene {
                 initialY = 0;
             }
         });
+    }
+
+    public ArrayList<Rectangle> testCouleurProprietes(){
+        ArrayList<Rectangle> listeRectangles = new ArrayList<>();
+        //coin supérieur gauche
+        Rectangle carre1 =  new Rectangle(0,0,83.5,83.5);
+        carre1.setFill(Color.rgb(0,255,0,0.20));
+        listeRectangles.add(carre1);
+
+
+        //haut
+        double x = 85.5;
+        for (int i = 1; i < 10; i++){
+            Rectangle unCarre = new Rectangle(x + 51.25 * (i - 1), 0,  51.25, 63.5);
+            unCarre.setFill(Color.rgb(255,0,0,0.2));
+            listeRectangles.add(unCarre);
+            x+= 2;
+        }
+
+        x = 85.5;
+        //gauche
+        for (int i = 1; i < 10; i++) {
+            Rectangle unCarre2 = new Rectangle(0, x + 51.25 * (i - 1), 63.5, 51.25);
+            unCarre2.setFill(Color.rgb(0, 0, 255, 0.20));
+            listeRectangles.add(unCarre2);
+            x += 2;
+        }
+
+        //droite
+        double x2 = 85.5 + 9 * 51.25 + 38;
+        x = 85.5;
+        for (int i = 1; i < 10; i++){
+            Rectangle unCarre3 = new Rectangle(x2, x + 51.25 * (i - 1), 63.5, 51.25);
+            unCarre3.setFill(Color.rgb(255,255,0,0.20));
+            listeRectangles.add(unCarre3);
+            x+=2;
+        }
+
+        //bas
+        x = 85.5;
+        for (int i = 1; i < 10; i++){
+            Rectangle unCarre4 = new Rectangle(x + 51.25 * (i - 1), x2, 51.25, 63.5);
+            unCarre4.setFill(Color.rgb(255,255,0,0.20));
+            listeRectangles.add(unCarre4);
+            x+=2;
+        }
+
+        return listeRectangles;
+    }
+
+    public ArrayList<Circle> testPositionPions(){
+        ArrayList<Circle> listeCercle = new ArrayList<>();
+
+        double a = 12.5;
+        double b = 85.5;
+        double c = 51.25;
+        double ecartement = 26.65;
+        int r = 9;
+        double x = a + r * 2;
+        Color color;
+        //case visite libre haut
+        for (int i = 0; i < 2; i++){
+            if (i == 0){
+                color = Color.rgb(0,255,0);
+            } else {
+                color = Color.rgb(255,255,0);
+            }
+            Circle cercle1 = new Circle(x, a, r, color);
+            cercle1.setStroke(Color.BLACK);
+            listeCercle.add(cercle1);
+            x+= ecartement;
+
+        }
+
+        //cases en haut
+        x = a + r * 2;
+        for (int i = 0; i < 18; i++){
+            Circle circle = new Circle(x + c + 16, a, r, Color.BLUE);
+            listeCercle.add(circle);
+            x+= ecartement;
+        }
+
+
+        x = a + r * 2;
+        for (int i = 0; i < 18; i++){
+            Circle circle1 = new Circle(x + c + 16, a + r * 2 + 4, r, Color.BLUE);
+            listeCercle.add(circle1);
+            x+= ecartement;
+        }
+
+        //case prison
+        Circle circlePrison = new Circle(x + c + 74, a, r, Color.BLUE);
+        listeCercle.add(circlePrison);
+
+        x = a + r * 2;
+        //case visite libre
+        for (int i = 0; i < 2; i++){
+            Circle cercle1 = new Circle(a, x, r, Color.RED);
+            cercle1.setStroke(Color.BLACK);
+            listeCercle.add(cercle1);
+            x+= ecartement;
+        }
+
+        //cases à gauche
+        x = a + r * 2;
+        for (int i = 0; i < 18; i++){
+            Circle circle = new Circle(a, x + c + 16, r, Color.BLUE);
+            listeCercle.add(circle);
+            x+= ecartement;
+        }
+
+
+
+        return listeCercle;
     }
 
 

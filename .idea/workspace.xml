@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9f8a2680-a9f8-4d71-a660-856c125ecc58" name="Changes" comment="Attribution ordre joueurs">
+    <list default="true" id="9f8a2680-a9f8-4d71-a660-856c125ecc58" name="Changes" comment="Attribution ordre joueurs ok, reste plus qu'à gérer les cas d'égalités">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Affichage/AffichageAttributionOrdre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Affichage/AffichageAttributionOrdre.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Affichage/AffichageJeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Affichage/AffichageJeu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controle/ControleAttributionOrdreJoueurs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controle/ControleAttributionOrdreJoueurs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controle/ControleJeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controle/ControleJeu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/monopoly_fx/ApplicationFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/monopoly_fx/ApplicationFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Modele/Jeu/Couleurs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modele/Jeu/Couleurs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Modele/Jeu/Plateau.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Modele/Jeu/Plateau.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +54,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/valme/OneDrive/BUT_INFO/Projets_perso/Java/MONOPOLY_FX/src/main/resources/de&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/valme/OneDrive/BUT_INFO/Projets_perso/Java/MONOPOLY_FX&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -113,7 +113,17 @@
       <workItem from="1687160607415" duration="9633000" />
       <workItem from="1687172748732" duration="5651000" />
       <workItem from="1687190156995" duration="18520000" />
-      <workItem from="1687247676101" duration="14819000" />
+      <workItem from="1687247676101" duration="15539000" />
+      <workItem from="1687330737347" duration="4434000" />
+      <workItem from="1687423336984" duration="808000" />
+      <workItem from="1689588318223" duration="196000" />
+      <workItem from="1690744041442" duration="3436000" />
+      <workItem from="1690785588042" duration="6181000" />
+      <workItem from="1690873172894" duration="3384000" />
+      <workItem from="1691307090716" duration="1695000" />
+      <workItem from="1693550417275" duration="653000" />
+      <workItem from="1693814532689" duration="615000" />
+      <workItem from="1693856496733" duration="342000" />
     </task>
     <task id="LOCAL-00001" summary="Debut jeu Monopoly en JavaFX">
       <created>1687127038371</created>
@@ -157,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687255508343</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Attribution ordre joueurs ok, reste plus qu'à gérer les cas d'égalités">
+      <created>1687262649734</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1687262649734</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +187,7 @@
     <MESSAGE value="Création affichage debut" />
     <MESSAGE value="Animation dé" />
     <MESSAGE value="Attribution ordre joueurs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Attribution ordre joueurs" />
+    <MESSAGE value="Attribution ordre joueurs ok, reste plus qu'à gérer les cas d'égalités" />
+    <option name="LAST_COMMIT_MESSAGE" value="Attribution ordre joueurs ok, reste plus qu'à gérer les cas d'égalités" />
   </component>
 </project>

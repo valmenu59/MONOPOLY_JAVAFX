@@ -52,6 +52,12 @@ public class ControleAttributionOrdreJoueurs {
         //affichage.afficherJoueurs();
 
          */
+
+
+        /*
+
+       Sera changé dans une future mise à jour pour que les joueurs peuvent choisir leur pseudo
+         */
         listeJoueur.add(new Joueur("joueur1a"));
         listeJoueur.add(new Joueur("joueur2b"));
         listeJoueur.add(new Joueur("joueur3c"));
@@ -103,6 +109,7 @@ public class ControleAttributionOrdreJoueurs {
 
                     if (listeJoueurTrie.size() == listeJoueur.size() ) { //&& exaequo1.isEmpty() && exaequo2.isEmpty()
                         printListeJoueur();
+                        new ControleJeu(listeJoueurTrie, affichage.getStage());
                     } else {
                         compteur++;
                         affichage.setDeLances(false);
@@ -197,7 +204,7 @@ public class ControleAttributionOrdreJoueurs {
             System.out.println(listeJoueurTrie.get(i).getValeurDe());
             System.out.println(listeJoueurTrie.get(i).getSurnom());
         }
-        ControleJeu cj = new ControleJeu(listeJoueurTrie, affichage.getStage());
+        //ControleJeu cj = new ControleJeu(listeJoueurTrie, affichage.getStage());
     }
 
 

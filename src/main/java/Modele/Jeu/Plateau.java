@@ -67,9 +67,9 @@ public class Plateau {
         cases[35] = new Gare(35, "GARE SAINT-LAZARE");
         cases[36] = new Chance(36);
         cases[37] = new Propriete(37, "AVENUE DES CHAMPS-ELYSEES", 350, 35,
-                175, 500, 1100, 1300, 1500, 175, 200, Couleurs.BLUE);
+                175, 500, 1100, 1300, 1500, 175, 200, Couleurs.BLEU);
         cases[38] = new Cotisation(38, "TAXE DE LUXE", 100);
         cases[39] = new Propriete(39, "RUE DE LA PAIX", 400, 50,
-                200, 600, 1400, 1700, 2000, 200, 200, Couleurs.BLUE);
+                200, 600, 1400, 1700, 2000, 200, 200, Couleurs.BLEU);
     }
 }
